@@ -1,8 +1,14 @@
 import React from 'react';
+import './Movie.css'
 
 const movie = (props) => {
   return (<div className="Movie">
-  <p>{props.title}</p>
+  <header>
+  <h3>{props.title}</h3>
+  </header>
+  <content>
+<p>{props.overview}</p>
+  </content>
   </div>)
 }
 

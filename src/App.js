@@ -33,7 +33,7 @@ class App extends Component {
         array.push(i+1);
       }
       this.setState({
-        movies: response.data.results,
+        movies: response.data.results.slice(0, 5),
         pages: array,
         page: response.data.page
       })
@@ -53,7 +53,7 @@ class App extends Component {
     (
       <div>
       {this.state.movies.map((movie, index) => {
-        return <Movie title={movie.title} key={movie.id} />
+        return <Movie title={movie.title} overview={movie.overview} key={movie.id} />
       })}
       </div>
     )
