@@ -1,0 +1,27 @@
+
+.App {
+  padding: 2px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.Paginator {
+  text-align:  center;
+}
+
+.Paginator button {
+  cursor: pointer;
+}
+
+button {
+  border-radius: 50%;
+  background-color: whitesmoke;
+  color: blue;
+  font-size: 15px;
+  border: none;
+
+}
+
+button :focus {
+   background-color: blue !important;
+}

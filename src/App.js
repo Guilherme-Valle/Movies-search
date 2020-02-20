@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from './Movie/Movie.js'
 import InputSearchMovie from './InputSearchMovie/InputSearchMovie.js'
+import PageHeader from './PageHeader/PageHeader.js'
 import axios from 'axios';
 import './App.css';
 
@@ -9,7 +10,7 @@ class App extends Component {
     movies: [],
     current_page: 1,
     query: '',
-    total_pages: 1
+    pages: [1]
   }
 
   /**
@@ -27,11 +28,22 @@ class App extends Component {
      + query + "&page=" + this.state.current_page)
     .then(response => {
       console.log(response.data);
+      let array = [];
+      for (let i = 0; i < response.data.total_pages; i++){
+        array.push(i+1);
+      }
       this.setState({
         movies: response.data.results,
-        total_pages: response.data.total_pages
+        pages: array,
+        page: response.data.page
       })
     });
+  }
+
+  changePage = (page) => {
+    this.setState({
+      current_page: page
+    }, () => this.getMovies(null));
   }
 
   render() {
@@ -46,10 +58,20 @@ class App extends Component {
       </div>
     )
   }
+  let pages =
+  (
+    <div className="Paginator">
+    {this.state.pages.map((item, index) => {
+      return <button onClick={() => this.changePage(item)}>{item}</button>
+    } )}
+    </div>
+  );
     return (
       <div className="App">
+      <PageHeader />
       <InputSearchMovie changed={(event) => this.getMovies(event.target.value)} />
       {movies}
+      {pages}
       </div>
     );
   }

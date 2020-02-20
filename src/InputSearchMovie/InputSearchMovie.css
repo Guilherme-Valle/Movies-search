@@ -1,0 +1,15 @@
+input{
+   -moz-appearance: none;/* older firefox */
+   -webkit-appearance: none; /* safari, chrome, edge and ie mobile */
+   appearance: none; /* rest */
+   width: 33%;
+   padding: 15px;
+   background: #d7d7d7;
+   color: #4ea8ce;
+   border-radius: 15px;
+   border: none;
+}
+::placeholder {
+  color: #4ea8ce;
+
+}
